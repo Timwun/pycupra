@@ -2348,8 +2348,25 @@ class Vehicle:
     @property
     def is_charging_power_supported(self) -> bool:
         """Return true if charging power is supported."""
-        if 'chargedPowerInKw' in self.attrs.get('charging').get('status',{}).get('charging',{}):
-            return True
+        if self.attrs.get('charging', False):
+            if 'chargedPowerInKw' in self.attrs.get('charging', {}).get('status', {}).get('charging', {}):
+                return True
+        return False
+
+    @property
+    def charge_energy(self) -> float:
+        """Return charge energy in kWh."""
+        if self.attrs.get('charging', False):
+            val = self.attrs.get('charging', {}).get('status', {}).get('battery', {}).get('chargeEnergyInKwh', 0.0)
+            return float(val) if val is not None else 0.0
+        return 0.0
+
+    @property
+    def is_charge_energy_supported(self) -> bool:
+        """Return true if charge energy is supported."""
+        if self.attrs.get('charging', False):
+            if 'chargeEnergyInKwh' in self.attrs.get('charging', {}).get('status', {}).get('battery', {}):
+                return True
         return False
 
     @property
@@ -2370,14 +2387,16 @@ class Vehicle:
     def charge_rate(self) -> int:
         """Return charge rate in km per h."""
         if self.attrs.get('charging', False):
-            return int(self.attrs.get('charging', {}).get('status', {}).get('charging', {}).get('rateInKmph', 0))
+            val = self.attrs.get('charging', {}).get('status', {}).get('charging', {}).get('rateInKmph', 0)
+            return int(val) if val is not None else 0
         return 0
 
     @property
     def is_charge_rate_supported(self) -> bool:
         """Return true if charge rate is supported."""
-        if 'rateInKmph' in self.attrs.get('charging').get('status',{}).get('charging',{}):
-            return True
+        if self.attrs.get('charging', False):
+            if 'rateInKmph' in self.attrs.get('charging', {}).get('status', {}).get('charging', {}):
+                return True
         return False
 
     @property

@@ -2349,6 +2349,13 @@ def create_instruments():
             device_class="speed",
         ),
         Sensor(
+            attr="charge_energy",
+            name="Charge energy",
+            icon="mdi:battery-charging",
+            unit="kWh",
+            device_class="energy",
+        ),
+        Sensor(
             attr="electric_range",
             name="Electric range",
             icon="mdi:car-electric",
