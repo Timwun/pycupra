@@ -2364,10 +2364,7 @@ class Vehicle:
     @property
     def is_charge_energy_supported(self) -> bool:
         """Return true if charge energy is supported."""
-        if self.attrs.get('charging', False):
-            if 'chargeEnergyInKwh' in self.attrs.get('charging', {}).get('status', {}).get('battery', {}):
-                return True
-        return False
+        return self.is_charging_supported
 
     @property
     def charging_battery_care(self) -> bool:
@@ -2394,10 +2391,7 @@ class Vehicle:
     @property
     def is_charge_rate_supported(self) -> bool:
         """Return true if charge rate is supported."""
-        if self.attrs.get('charging', False):
-            if 'rateInKmph' in self.attrs.get('charging', {}).get('status', {}).get('charging', {}):
-                return True
-        return False
+        return self.is_charging_supported
 
     @property
     def external_power(self):
