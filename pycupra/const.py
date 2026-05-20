@@ -41,6 +41,7 @@ HEADERS_SESSION = {
     #'X-App-Name': XAPPNAME,
     'app-version': XAPPVERSION_SEAT,
     'app-brand': 'seat',
+    'app-market': 'android',
     'origin': 'app',
     'User-Agent': USER_AGENT_SEAT,
     #'User-ID': '?????', # to be set later
@@ -55,6 +56,7 @@ HEADERS_SESSION = {
     #'X-App-Name': XAPPNAME,
     'app-version': XAPPVERSION_CUPRA,
     'app-brand': 'cupra',
+    'app-market': 'android',
     'origin': 'app',
     'User-Agent': USER_AGENT_CUPRA,
     #'User-ID': '?????', # to be set later,
